@@ -1,0 +1,45 @@
+.timesheet-header {
+  display: flex;
+  background: #2a2d35;
+  border-bottom: 2px solid #3a3d45;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  &__left {
+    min-width: 320px;
+    max-width: 320px;
+    background: #2a2d35;
+    border-right: 2px solid #3a3d45;
+  }
+
+  &__days {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #4a4d55;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #2a2d35;
+    }
+  }
+
+  &__right {
+    min-width: 160px;
+    max-width: 160px;
+    background: #33363e;
+    border-left: 2px solid #3a3d45;
+  }
+}
+
+.header-svg {
+  display: block;
+}

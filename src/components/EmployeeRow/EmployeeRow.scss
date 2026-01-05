@@ -1,0 +1,150 @@
+.employee-row {
+  display: flex;
+  background: #2a2d35;
+  border-bottom: 1px solid #3a3d45;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #33363e;
+  }
+
+  // ЛЕВАЯ ЧАСТЬ (фиксированная)
+  &__info {
+    min-width: 320px;
+    max-width: 320px;
+    padding: 1rem;
+    background: #2a2d35;
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    border-right: 2px solid #3a3d45;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  &__details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__company {
+    font-size: 11px;
+    color: #8a8d95;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+&__schedule {
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: rgba(33, 150, 243, 0.15);
+    color: #2196f3;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer; // ← ДОБАВИЛИ
+    transition: all 0.2s; // ← ДОБАВИЛИ
+    
+    // ← ДОБАВИЛИ hover
+    &:hover {
+      background: rgba(33, 150, 243, 0.25);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+  // СРЕДНЯЯ ЧАСТЬ (SVG, скроллится)
+  &__days {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #4a4d55;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #2a2d35;
+    }
+  }
+
+  // ПРАВАЯ ЧАСТЬ (фиксированная)
+  &__totals {
+    min-width: 160px;
+    max-width: 160px;
+    padding: 1rem;
+    background: #33363e;
+    position: sticky;
+    right: 0;
+    z-index: 10;
+    border-left: 2px solid #3a3d45;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+}
+
+.days-svg {
+  display: block;
+}
+
+.total-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-label {
+  font-size: 10px;
+  color: #8a8d95;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.total-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.text-warning {
+  color: #ffc107;
+}
+
+.text-danger {
+  color: #f44336;
+}

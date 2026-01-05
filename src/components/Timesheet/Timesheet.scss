@@ -1,0 +1,39 @@
+.timesheet {
+  min-height: 100vh;
+  background: #1a1d24;
+
+  &__header {
+    background: #2a2d35;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #3a3d45;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  &__period {
+    font-size: 16px;
+    color: #8a8d95;
+    font-weight: 500;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ← ДОБАВИЛИ
+  &__empty {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #8a8d95;
+    font-size: 16px;
+  }
+}

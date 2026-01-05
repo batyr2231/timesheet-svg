@@ -1,0 +1,92 @@
+.month-navigation {
+  padding: 1rem 2rem;
+  background: #2a2d35;
+  border-bottom: 1px solid #3a3d45;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #3a3d45;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #4a4d55;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__selects {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__select {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #3a3d45;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #4a4d55;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #2196f3;
+    }
+
+    option {
+      background: #2a2d35;
+      color: #ffffff;
+    }
+  }
+
+  &__today {
+    padding: 0.5rem 1.5rem;
+    background: rgba(33, 150, 243, 0.15);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    border-radius: 8px;
+    color: #2196f3;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    margin-left: 0.5rem;
+
+    &:hover {
+      background: rgba(33, 150, 243, 0.25);
+      border-color: #2196f3;
+    }
+  }
+}
