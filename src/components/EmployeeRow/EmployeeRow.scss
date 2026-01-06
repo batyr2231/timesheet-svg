@@ -84,21 +84,7 @@
   // СРЕДНЯЯ ЧАСТЬ (SVG, скроллится)
   &__days {
     flex: 1;
-    overflow-x: auto;
-    overflow-y: hidden;
-    
-    &::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #4a4d55;
-      border-radius: 3px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: #2a2d35;
-    }
+    min-width: 0;
   }
 
   // ПРАВАЯ ЧАСТЬ (фиксированная)

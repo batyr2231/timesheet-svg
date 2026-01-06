@@ -54,16 +54,21 @@ export const TimesheetHeader: React.FC<TimesheetHeaderProps> = ({ year, month })
             fill="#3a3d45"
           />
 
-          {/* Индикатор текущего дня (змейка) */}
-          {currentDay > 0 && (
-            <rect
-              x={0}
-              y={0}
-              width={currentDay * CELL_WIDTH}
-              height={HEADER_HEIGHT}
-              fill="rgba(33, 150, 243, 0.1)"
-            />
-          )}
+          
+            {/* Индикатор текущего дня - ЛИНИЯ */}
+            {currentDay > 0 && (
+            <>
+                {/* Вертикальная линия */}
+                <line
+                x1={currentDay * CELL_WIDTH}
+                y1={0}
+                x2={currentDay * CELL_WIDTH}
+                y2={HEADER_HEIGHT}
+                stroke="#2196f3"
+                strokeWidth="2"
+                />
+            </>
+            )}
 
           {/* Дни */}
           {days.map(({ day, dayName, isWeekend, x }) => (
@@ -86,19 +91,6 @@ export const TimesheetHeader: React.FC<TimesheetHeaderProps> = ({ year, month })
                   width={CELL_WIDTH}
                   height={HEADER_HEIGHT}
                   fill="rgba(0, 0, 0, 0.2)"
-                />
-              )}
-
-              {/* Текущий день - подсветка */}
-              {day === currentDay && (
-                <rect
-                  x={x}
-                  y={0}
-                  width={CELL_WIDTH}
-                  height={HEADER_HEIGHT}
-                  fill="rgba(33, 150, 243, 0.2)"
-                  stroke="#2196f3"
-                  strokeWidth="2"
                 />
               )}
 

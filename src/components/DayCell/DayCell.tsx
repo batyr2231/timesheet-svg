@@ -8,19 +8,17 @@ interface DayCellProps {
 
 export const DayCell: React.FC<DayCellProps> = ({ day, onClick }) => {
   const PIXELS_PER_HOUR = 3;
-  const CELL_WIDTH = 24 * PIXELS_PER_HOUR; // 72px = 1 день
+  const CELL_WIDTH = 24 * PIXELS_PER_HOUR; // 72px
   const CELL_HEIGHT = 60;
-  const x = day.svg_x; // Начало дня
+  const x = day.svg_x;
 
-  // Для рабочих часов
   const workStartX = day.svg_x_work_start || x;
   const workEndX = day.svg_x_work_end || x;
-  const workWidth = workEndX - workStartX;
-
+  
   const getCellColor = (): string => {
     if (day.isHollyday === 1) return 'rgba(255,193,7,0.3)';
     if (day.isWorkDay === 0) return '#33363e';
-    return '#2a2d35'; // Нейтральный фон для дня
+    return '#2a2d35';
   };
 
   const getWorkColor = (): string => {
@@ -45,6 +43,12 @@ export const DayCell: React.FC<DayCellProps> = ({ day, onClick }) => {
 
   const isOvernightShift = day.overNight === 1 && day.isWorkDay === 1;
 
+  // Для суточных смен: рассчитываем часть в текущем дне
+  const dayEndX = x + CELL_WIDTH; // Конец текущего дня
+  const workWidthInThisDay = isOvernightShift 
+    ? Math.min(workEndX, dayEndX) - workStartX // До конца дня или до конца смены
+    : workEndX - workStartX;
+
   return (
     <g 
       className="day-cell" 
@@ -63,12 +67,12 @@ export const DayCell: React.FC<DayCellProps> = ({ day, onClick }) => {
       />
 
       {/* Рабочие часы - заливка */}
-      {day.isWorkDay === 1 && (
+      {day.isWorkDay === 1 && workWidthInThisDay > 0 && (
         <>
           <rect
             x={workStartX}
             y={0}
-            width={workWidth}
+            width={workWidthInThisDay}
             height={CELL_HEIGHT}
             fill={getWorkColor()}
             stroke={getBorderColor()}
@@ -82,7 +86,7 @@ export const DayCell: React.FC<DayCellProps> = ({ day, onClick }) => {
               <rect
                 x={workStartX}
                 y={0}
-                width={workWidth}
+                width={workWidthInThisDay}
                 height={CELL_HEIGHT}
                 fill="url(#overnight-gradient)"
                 opacity="0.4"
@@ -90,7 +94,7 @@ export const DayCell: React.FC<DayCellProps> = ({ day, onClick }) => {
               <line
                 x1={workStartX}
                 y1={CELL_HEIGHT - 3}
-                x2={workStartX + workWidth}
+                x2={workStartX + workWidthInThisDay}
                 y2={CELL_HEIGHT - 3}
                 stroke="#9c27b0"
                 strokeWidth="3"
