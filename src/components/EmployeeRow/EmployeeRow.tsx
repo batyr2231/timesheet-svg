@@ -82,8 +82,7 @@ const earlyDepartCount = days.filter(d => d.isEarlyDeparture === 1).length;
             {days.map((day, index) => {
                 if (day.overNight === 1 && day.isWorkDay === 1 && index < days.length - 1) {
                 const nextDay = days[index + 1];
-                const PIXELS_PER_HOUR = 3;
-                const CELL_WIDTH = 72;
+
                 
                 // Начало следующего дня
                 const nextDayStartX = nextDay.svg_x;
